@@ -27,19 +27,106 @@ public class homepage extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cont = new javax.swing.JButton();
+        graybox = new javax.swing.JTextField();
+        exit = new javax.swing.JLabel();
+        banner = new javax.swing.JLabel();
+        whitebox = new javax.swing.JTextField();
+        steamtxt = new javax.swing.JLabel();
+        steamicon = new javax.swing.JLabel();
+        riottxt = new javax.swing.JLabel();
+        rioticon = new javax.swing.JLabel();
+        chrometxt = new javax.swing.JLabel();
+        chromeicon = new javax.swing.JLabel();
+        netbeanstxt = new javax.swing.JLabel();
+        recyclingtxt = new javax.swing.JLabel();
+        netbeansicon = new javax.swing.JLabel();
+        recyclingbin = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        windowsbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Data Defender");
-        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 170, 60));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("<html>\nWelcome to Data Defender!\n<br>\n<br>\nTo begin this game, please create an account.\n<br>\n<br> \nClick OK to begin.\n</html>");
+        jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
-        jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 723, 429));
+        cont.setText("OK");
+        cont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
+
+        graybox.setBackground(new java.awt.Color(229, 229, 229));
+        graybox.setForeground(new java.awt.Color(204, 204, 204));
+        graybox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grayboxActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(graybox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 300, 50));
+
+        exit.setForeground(new java.awt.Color(204, 204, 204));
+        exit.setText("X");
+        jLayeredPane1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 10, -1));
+
+        banner.setForeground(new java.awt.Color(204, 204, 204));
+        banner.setText("Setup Software");
+        jLayeredPane1.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+
+        whitebox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                whiteboxActionPerformed(evt);
+            }
+        });
+        jLayeredPane1.add(whitebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 300, 220));
+
+        steamtxt.setForeground(new java.awt.Color(255, 255, 255));
+        steamtxt.setText("Steam");
+        jLayeredPane1.add(steamtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+
+        steamicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/steamicon.png"))); // NOI18N
+        jLayeredPane1.add(steamicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        riottxt.setForeground(new java.awt.Color(255, 255, 255));
+        riottxt.setText("Riot Client");
+        jLayeredPane1.add(riottxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        rioticon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/rioticon.png"))); // NOI18N
+        jLayeredPane1.add(rioticon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, 50));
+
+        chrometxt.setForeground(new java.awt.Color(255, 255, 255));
+        chrometxt.setText("Google Chrome");
+        jLayeredPane1.add(chrometxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
+
+        chromeicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chromeicon.png"))); // NOI18N
+        jLayeredPane1.add(chromeicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        netbeanstxt.setForeground(new java.awt.Color(255, 255, 255));
+        netbeanstxt.setText("Netbeans");
+        jLayeredPane1.add(netbeanstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        recyclingtxt.setForeground(new java.awt.Color(255, 255, 255));
+        recyclingtxt.setText("Recycling Bin");
+        jLayeredPane1.add(recyclingtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        netbeansicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/netbeans Icon.png"))); // NOI18N
+        jLayeredPane1.add(netbeansicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        recyclingbin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Recycling Icon.png"))); // NOI18N
+        jLayeredPane1.add(recyclingbin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        title.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setText("Data Defender");
+        jLayeredPane1.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 170, 60));
+
+        windowsbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
+        jLayeredPane1.add(windowsbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 723, 429));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,6 +141,18 @@ public class homepage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void whiteboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_whiteboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_whiteboxActionPerformed
+
+    private void grayboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grayboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_grayboxActionPerformed
+
+    private void contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,8 +190,24 @@ public class homepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel banner;
+    private javax.swing.JLabel chromeicon;
+    private javax.swing.JLabel chrometxt;
+    private javax.swing.JButton cont;
+    private javax.swing.JLabel exit;
+    private javax.swing.JTextField graybox;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel netbeansicon;
+    private javax.swing.JLabel netbeanstxt;
+    private javax.swing.JLabel recyclingbin;
+    private javax.swing.JLabel recyclingtxt;
+    private javax.swing.JLabel rioticon;
+    private javax.swing.JLabel riottxt;
+    private javax.swing.JLabel steamicon;
+    private javax.swing.JLabel steamtxt;
+    private javax.swing.JLabel title;
+    private javax.swing.JTextField whitebox;
+    private javax.swing.JLabel windowsbackground;
     // End of variables declaration//GEN-END:variables
 }
