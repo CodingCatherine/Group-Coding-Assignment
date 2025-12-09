@@ -28,10 +28,10 @@ public class homepage extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
         cont = new javax.swing.JButton();
-        graybox = new javax.swing.JTextField();
         exit = new javax.swing.JLabel();
         banner = new javax.swing.JLabel();
-        whitebox = new javax.swing.JTextField();
+        graybox = new javax.swing.JPanel();
+        whitebox = new javax.swing.JPanel();
         steamtxt = new javax.swing.JLabel();
         steamicon = new javax.swing.JLabel();
         riottxt = new javax.swing.JLabel();
@@ -59,30 +59,44 @@ public class homepage extends javax.swing.JFrame {
                 contActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
+        jLayeredPane1.add(cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 250, 80, -1));
 
-        graybox.setBackground(new java.awt.Color(229, 229, 229));
-        graybox.setForeground(new java.awt.Color(204, 204, 204));
-        graybox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grayboxActionPerformed(evt);
-            }
-        });
-        jLayeredPane1.add(graybox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 300, 50));
-
-        exit.setForeground(new java.awt.Color(204, 204, 204));
+        exit.setForeground(new java.awt.Color(153, 153, 153));
         exit.setText("X");
         jLayeredPane1.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 10, -1));
 
-        banner.setForeground(new java.awt.Color(204, 204, 204));
+        banner.setForeground(new java.awt.Color(153, 153, 153));
         banner.setText("Setup Software");
         jLayeredPane1.add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
-        whitebox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                whiteboxActionPerformed(evt);
-            }
-        });
+        graybox.setBackground(new java.awt.Color(220, 220, 220));
+
+        javax.swing.GroupLayout grayboxLayout = new javax.swing.GroupLayout(graybox);
+        graybox.setLayout(grayboxLayout);
+        grayboxLayout.setHorizontalGroup(
+            grayboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        grayboxLayout.setVerticalGroup(
+            grayboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jLayeredPane1.add(graybox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 300, 50));
+
+        whitebox.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout whiteboxLayout = new javax.swing.GroupLayout(whitebox);
+        whitebox.setLayout(whiteboxLayout);
+        whiteboxLayout.setHorizontalGroup(
+            whiteboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        whiteboxLayout.setVerticalGroup(
+            whiteboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+
         jLayeredPane1.add(whitebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 300, 220));
 
         steamtxt.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,10 +128,10 @@ public class homepage extends javax.swing.JFrame {
         recyclingtxt.setText("Recycling Bin");
         jLayeredPane1.add(recyclingtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        netbeansicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/netbeans Icon.png"))); // NOI18N
+        netbeansicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/netbeansicon.png"))); // NOI18N
         jLayeredPane1.add(netbeansicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        recyclingbin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Recycling Icon.png"))); // NOI18N
+        recyclingbin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/recyclingicon.png"))); // NOI18N
         jLayeredPane1.add(recyclingbin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         title.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
@@ -142,16 +156,9 @@ public class homepage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void whiteboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_whiteboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_whiteboxActionPerformed
-
-    private void grayboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grayboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_grayboxActionPerformed
-
     private void contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contActionPerformed
-        // TODO add your handling code here:
+        //When the ok button is pressed start the program
+        
     }//GEN-LAST:event_contActionPerformed
 
     /**
@@ -195,7 +202,7 @@ public class homepage extends javax.swing.JFrame {
     private javax.swing.JLabel chrometxt;
     private javax.swing.JButton cont;
     private javax.swing.JLabel exit;
-    private javax.swing.JTextField graybox;
+    private javax.swing.JPanel graybox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel netbeansicon;
@@ -207,7 +214,7 @@ public class homepage extends javax.swing.JFrame {
     private javax.swing.JLabel steamicon;
     private javax.swing.JLabel steamtxt;
     private javax.swing.JLabel title;
-    private javax.swing.JTextField whitebox;
+    private javax.swing.JPanel whitebox;
     private javax.swing.JLabel windowsbackground;
     // End of variables declaration//GEN-END:variables
 }
