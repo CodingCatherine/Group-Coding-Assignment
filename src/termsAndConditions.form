@@ -42,30 +42,30 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="cancel" min="-2" pref="112" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="cancel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="accept" min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="accept" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="scrollPane1" min="-2" pref="469" max="-2" attributes="0"/>
+                  <Component id="scrollPane1" alignment="1" min="-2" pref="450" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="185" max="32767" attributes="0"/>
+              <EmptySpace pref="139" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="scrollPane1" min="-2" pref="402" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="scrollPane1" min="-2" pref="350" max="-2" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="accept" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,24 +75,18 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.ScrollPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="terms">
+            <Component class="javax.swing.JTextArea" name="jTextArea2">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="NSimSun" size="12" style="0"/>
-                </Property>
-                <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="text" type="java.lang.String" value="DATA DEFENDER - TERMS OF SERVICE&#xa;Last Updated: December 9, 2025&#xa;&#xa;Welcome to Data Defender. These Terms of Service&#xa;govern your access to and use of the Data Defender&#xa;application. By creating an account, accessing the Service, &#xa;or using any portion of the application, you agree to be &#xa;legally bound by these Terms.&#xa;&#xa;Please read these Terms carefully. They describe the rules,&#xa;responsibilities, and limitations regarding your use of the&#xa;Service, as well as important information about how your&#xa;data may be collected, stored, and processed for the&#xa;purpose of delivering core features and educational&#xa;content.&#xa;&#xa;1. PURPOSE OF THE SERVICE&#xa;Data Defender is designed to help users develop stronger&#xa;privacy awareness and safer digital habits. The Service&#xa;may simulate real online threats such as phishing emails,&#xa;unsafe links, and weak passwords. Occasional references&#xa;to cartoon sea creatures may appear solely for testing&#xa;attentiveness and emotional support.&#xa;&#xa;2. INFORMATION WE COLLECT&#xa;To provide a personalized learning experience, the Service&#xa;may collect the following information:&#xa;&#xa;- Username and encrypted password&#xa;- Gameplay progress, choices, and scores&#xa;- Basic device details (OS version, screen size, time zone)&#xa;- Approximate or precise location data for regional privacy&#xa;  law simulations and scenario customization&#xa;- Usage patterns, click behavior, and session timestamps&#xa;&#xa;In extremely rare cases, the Service may request optional&#xa;financial information for simulated training exercises.&#xa;These simulations are fictional and no real transactions&#xa;occur, unless you count the one time Gary from accounting&#xa;bought a sandwich using the test server by accident.&#xa;&#xa;We may also collect your thoughts on ducks wearing tiny&#xa;hats for strictly serious, definitely not humorous research.&#xa;&#xa;3. DATA TRACKING AND STORAGE&#xa;The Service may use temporary identifiers (&quot;cookies&quot;) to&#xa;keep you logged in and to analyze learning trends.&#xa;Behavioral analytics may track which buttons you press,&#xa;how long you hesitate, and whether you read paragraphs&#xa;containing the word &quot;squirrel.&quot;&#xa;&#xa;Location data may be collected to tailor lessons related to&#xa;regional risks (e.g., Wi-Fi safety, public hotspot warnings).&#xa;You may disable location access, but doing so may limit&#xa;some educational features.&#xa;&#xa;All collected data is stored securely, though backups may&#xa;be kept in a fireproof cabinet guarded by one exceptionally&#xa;alert squirrel. This squirrel has full clearance.&#xa;&#xa;4. DATA SHARING&#xa;Data Defender does not sell your personal information to&#xa;third parties for marketing purposes; however, anonymized&#xa;learning performance may be shared with researchers,&#xa;educators, and anyone who asks extremely politely and&#xa;brings snacks. This clause is rarely invoked but legally&#xa;binding in spirit.&#xa;&#xa;We do not share financial information unless required by&#xa;law, court order, or if SpongeBob personally requests it&#xa;for undersea regulatory compliance.&#xa;&#xa;5. USER RESPONSIBILITIES&#xa;By using the Service, you agree to:&#xa;&#xa;- Create accurate account information&#xa;- Maintain the security of your login credentials&#xa;- Use the Service responsibly and ethically&#xa;- Refrain from tampering with system functions or&#xa;  attempting to access restricted areas&#xa;- Avoid using the app while sleepwalking or wrestling&#xa;  an alligator, as this could result in injury or the loss of&#xa;  valuable reptiles&#xa;&#xa;6. ACCEPTANCE OF TERMS&#xa;By selecting the &quot;ACCEPT&quot; button, you confirm that you&#xa;have read and understood these Terms, including all&#xa;sections related to data collection, tracking behavior,&#xa;location access, and any references to aquatic mascots.&#xa;&#xa;If you do not agree to these Terms, or if the mention of&#xa;ducks wearing hats concerns you deeply, you must stop&#xa;using the Service immediately.&#xa;"/>
-                <Property name="wrapStyleWord" type="boolean" value="true"/>
               </Properties>
             </Component>
           </SubComponents>
