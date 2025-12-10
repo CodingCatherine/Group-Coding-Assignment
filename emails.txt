@@ -1,0 +1,6 @@
+Sender, Subject, Type
+Mr.Loo, School Project, safe
+Stalker223, I can see you, unsafe
+HappyFamily223, 100 dollars per hour no degree required, unsafe
+DogSitter, Your dog has been so good today!, safe
+Unknown, Your Bank has been hacked, unsafe
