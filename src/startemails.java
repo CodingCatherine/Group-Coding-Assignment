@@ -15,6 +15,31 @@ public class startemails extends javax.swing.JFrame {
     public startemails() {
         initComponents();
     }
+    
+    public class email {
+        private String type;
+        private String sender;
+        private String subject;
+        
+        public email (String type, String sender, String subject){
+            this.type = type;
+            this.sender = sender;
+            this.subject = subject;
+        }
+        
+        public String getType(){
+            return type;
+        }
+        
+        public String getSender(){
+            return sender;
+        }
+        
+        public String getSubject(){
+            return subject;
+        }
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -25,18 +50,31 @@ public class startemails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        whitebox = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(723, 429));
+
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        whitebox.setBackground(new java.awt.Color(255, 255, 255));
+        whitebox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gmail.png"))); // NOI18N
+        whitebox.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLayeredPane1.add(whitebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 722, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addComponent(jLayeredPane1)
         );
 
         pack();
@@ -78,5 +116,8 @@ public class startemails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel whitebox;
     // End of variables declaration//GEN-END:variables
 }
