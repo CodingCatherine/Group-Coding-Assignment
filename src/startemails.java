@@ -1,3 +1,9 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -72,16 +78,51 @@ public class startemails extends javax.swing.JFrame {
     
     public class Safe extends Email {
         private final String reason;
+        private final String something;
         
         
-        public Safe(String type, String sender, String subject, String reason){
+        public Safe(String type, String sender, String subject, String reason, String something){
             super(type, sender, subject);
             this.reason = reason;
+            this.something = something;
         }
         
         public String getReason(){
             return reason;
         }
+        
+        public String getSomething(){
+            return something;
+        }
+    }
+    
+    public Email[] readEmails(File file){
+        String [][] emails = new String [6][5];
+        int num = 0;
+        try{
+            Scanner read = new Scanner(file);
+            while(read.hasNext()){
+                String line = read.nextLine();
+                String [] data = line.split(",");
+                for(int i = 0;i < data.length; i++){
+                    emails[num][i] = data[i].trim();
+                }
+            num++;
+            } 
+        }catch(IOException e){
+            System.out.println("IO Exception!");
+        }
+        Email[] emailList = new Email [6];
+        for (int i = 0; i < emails.length; i++){
+            if (emails[i][2].equalsIgnoreCase("Safe")){
+                emailList[i] = new Safe(emails[i][0], emails[i][1], emails[i][2], emails[i][3], emails[i][4]);
+            }
+            else if (emails[i][2].equalsIgnoreCase("Unsafe")){
+                emailList[i] = new Unsafe(emails[i][0], emails[i][1], emails[i][2], emails[i][3], emails[i][4]);
+            }
+            
+        }
+        return emailList;
     }
 
     /**
