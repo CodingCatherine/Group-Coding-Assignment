@@ -73,15 +73,15 @@ public class startemails extends javax.swing.JFrame {
         public String getReason(){
             return reason;
         }
-        
+       
     }
     
     public class Safe extends Email {
-        private final String reason;
         private final String something;
+        private final String reason;
         
         
-        public Safe(String type, String sender, String subject, String reason, String something){
+        public Safe(String type, String sender, String subject, String something, String reason){
             super(type, sender, subject);
             this.reason = reason;
             this.something = something;
@@ -95,6 +95,7 @@ public class startemails extends javax.swing.JFrame {
             return something;
         }
     }
+    
     
     public Email[] readEmails(File file){
         String [][] emails = new String [6][5];
@@ -124,6 +125,8 @@ public class startemails extends javax.swing.JFrame {
         }
         return emailList;
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,6 +139,14 @@ public class startemails extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         whitebox = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -144,6 +155,27 @@ public class startemails extends javax.swing.JFrame {
 
         whitebox.setBackground(new java.awt.Color(255, 255, 255));
         whitebox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setText("Email Title details go here");
+        whitebox.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 270, 30));
+        whitebox.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 540, 20));
+
+        jLabel3.setText("Sender");
+        whitebox.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+
+        jLabel4.setText("Details abt the email go here");
+        whitebox.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 540, 280));
+        whitebox.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 540, 10));
+
+        jButton1.setText("jButton1");
+        whitebox.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
+
+        jButton2.setText("jButton2");
+        whitebox.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, -1, -1));
+
+        jButton3.setText("jButton3");
+        whitebox.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gmail.png"))); // NOI18N
         whitebox.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -200,8 +232,16 @@ public class startemails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel whitebox;
     // End of variables declaration//GEN-END:variables
 }
