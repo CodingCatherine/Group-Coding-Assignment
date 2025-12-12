@@ -16,12 +16,13 @@ public class startemails extends javax.swing.JFrame {
         initComponents();
     }
     
-    public class email {
-        private String type;
-        private String sender;
-        private String subject;
+    public class Email {
+        private final String type;
+        private final String sender;
+        private final String subject;
+        public static int numEmails;
         
-        public email (String type, String sender, String subject){
+        public Email(String type, String sender, String subject){
             this.type = type;
             this.sender = sender;
             this.subject = subject;
@@ -39,6 +40,48 @@ public class startemails extends javax.swing.JFrame {
             return subject;
         }
         
+        public static int getNumEmails(){
+            return numEmails;
+        }
+        
+        public static void setNumEmails(int num){
+            numEmails = num;
+        }
+        
+    }
+    
+    public class Unsafe extends Email {
+        private final String level;
+        private final String reason;
+        
+        public Unsafe(String type, String sender, String subject, String level, String reason){
+            super(type, sender, subject);
+            this.level = level;
+            this.reason = reason;
+        }
+        
+        public String getLevel(){
+            return level;
+        }
+        
+        public String getReason(){
+            return reason;
+        }
+        
+    }
+    
+    public class Safe extends Email {
+        private final String reason;
+        
+        
+        public Safe(String type, String sender, String subject, String reason){
+            super(type, sender, subject);
+            this.reason = reason;
+        }
+        
+        public String getReason(){
+            return reason;
+        }
     }
 
     /**
