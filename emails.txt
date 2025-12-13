@@ -1,6 +1,6 @@
-Safe, Mr.Loo, School Project, Please complete this project before the deadline, the reason blahblah
-Unsafe, Stalker223, I can see you, Severe, the reason blahblah
-Unsafe, HappyFamily223, 100 dollars per hour no degree required, Moderate, the reason blahblah
-Safe, DogSitter, Your dog has been so good today!, Cooper deserves all the Treats!, the reason blahblah
-Unsafe, Unknown, Your Bank has been hacked, Moderate, the reason blahblah
-Unsafe, Joe, You have a virus, Moderate, the reason blahblah
+Safe, Mr.Loo, School Project, Please complete this project before the deadline, this email is from a known sender ("Mr.Loo") and the subject is not suspicious
+Unsafe, Stalker223, I can see you, Severe, this email is from an unknown sender and the subject line is threatening ("I can see you")
+Unsafe, HappyFamily223, 100 dollars per hour no degree only need to send your SIN, Moderate, although the sender name looks less suspicious the subject asks for your SIN which is highly sensitive and should never be shared
+Safe, Alina, Your dog has been so good today!, Cooper deserves all the Treats!, this email is from a known sender ("Alina") and the subject is harmless
+Unsafe, Unknown, Your Bank has been hacked, Moderate, this email is from an unknown sender pretending to be a bank. Real banks use verified addresses so this is a scam
+Unsafe, Unknown, You have a virus. Click this link to fix your computer, Moderate, this email is from an unknown sender and contains a suspicious link. Clicking it could install malware or steal your information
