@@ -72,10 +72,15 @@
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="optionD1" min="-2" pref="162" max="-2" attributes="0"/>
+                      <Component id="score" min="-2" pref="162" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,7 +101,9 @@
                   <Component id="optionB" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="optionD" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="answerA" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="answerC" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
@@ -107,7 +114,7 @@
                   <Component id="answerD" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="optionD1" min="-2" max="-2" attributes="0"/>
+              <Component id="score" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -199,6 +206,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="answerAActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="answerB">
       <Properties>
@@ -244,8 +254,11 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="answerDActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="optionD1">
+    <Component class="javax.swing.JLabel" name="score">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="14" style="1"/>
@@ -256,6 +269,11 @@
             <LineBorder roundedCorners="true"/>
           </Border>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>
     </Component>
   </SubComponents>
