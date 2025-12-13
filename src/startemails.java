@@ -20,7 +20,14 @@ public class startemails extends javax.swing.JFrame {
      */
     public startemails() {
         initComponents();
+        cont.setVisible(false);
     }
+    
+    
+    
+    public static boolean report = false;
+    public static boolean open = false;
+    public static boolean delete = false;
     
     public class Email {
         private final String type;
@@ -32,6 +39,7 @@ public class startemails extends javax.swing.JFrame {
             this.type = type;
             this.sender = sender;
             this.subject = subject;
+            numEmails ++;
         }
         
         public String getType(){
@@ -120,10 +128,30 @@ public class startemails extends javax.swing.JFrame {
             }
             else if (emails[i][2].equalsIgnoreCase("Unsafe")){
                 emailList[i] = new Unsafe(emails[i][0], emails[i][1], emails[i][2], emails[i][3], emails[i][4]);
+            }else{
+                emailList[i] = new Email(emails[i][0], emails[i][1], emails[i][2]);
             }
             
         }
         return emailList;
+    }
+    
+    public void displayDetails(Email[] emails){
+        int i = Email.numEmails;
+        while (i > 0){
+            title.setText(emails[i].getSubject());
+            send.setText(emails[i].getSender());
+            if (report){
+                
+            }
+            else if (open){
+                
+            }
+            else if (delete){
+                
+            }
+        }
+        
     }
     
     
@@ -139,15 +167,16 @@ public class startemails extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         whitebox = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        send = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         rep = new javax.swing.JButton();
         op = new javax.swing.JButton();
         del = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        cont = new javax.swing.JButton();
+        back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,16 +185,17 @@ public class startemails extends javax.swing.JFrame {
         whitebox.setBackground(new java.awt.Color(255, 255, 255));
         whitebox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel2.setText("Email Title details go here");
-        whitebox.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 270, 30));
+        title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        title.setText("Email Title details go here");
+        whitebox.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 270, 30));
         whitebox.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 540, 20));
 
-        jLabel3.setText("Sender");
-        whitebox.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        send.setText("Sender");
+        whitebox.add(send, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
 
-        jLabel4.setText("Details abt the email go here");
-        whitebox.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 540, 280));
+        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        info.setText("Please Choose An Option Below");
+        whitebox.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 500, 260));
         whitebox.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 540, 10));
 
         rep.setText("Report");
@@ -177,13 +207,31 @@ public class startemails extends javax.swing.JFrame {
         whitebox.add(rep, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
 
         op.setText("Open");
+        op.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opActionPerformed(evt);
+            }
+        });
         whitebox.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
 
         del.setText("Delete");
+        del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delActionPerformed(evt);
+            }
+        });
         whitebox.add(del, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gmail.png"))); // NOI18N
-        whitebox.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        cont.setText("Continue");
+        cont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contActionPerformed(evt);
+            }
+        });
+        whitebox.add(cont, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 220, -1));
+
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gmail.png"))); // NOI18N
+        whitebox.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLayeredPane1.add(whitebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 430));
 
@@ -202,8 +250,40 @@ public class startemails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void repActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repActionPerformed
-        // TODO add your handling code here:
+        report = true;
+        rep.setVisible(false);
+        del.setVisible(false);
+        op.setVisible(false);
+        cont.setVisible(true);
+        
     }//GEN-LAST:event_repActionPerformed
+
+    private void contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contActionPerformed
+        report = false;
+        open = false;
+        delete = false;
+        
+        rep.setVisible(true);
+        del.setVisible(true);
+        op.setVisible(true);
+        cont.setVisible(false);
+    }//GEN-LAST:event_contActionPerformed
+
+    private void opActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opActionPerformed
+        open = true;
+        rep.setVisible(false);
+        del.setVisible(false);
+        op.setVisible(false);
+        cont.setVisible(true);
+    }//GEN-LAST:event_opActionPerformed
+
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+        delete = true;
+        rep.setVisible(false);
+        del.setVisible(false);
+        op.setVisible(false);
+        cont.setVisible(true);
+    }//GEN-LAST:event_delActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,16 +321,17 @@ public class startemails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
+    private javax.swing.JButton cont;
     private javax.swing.JButton del;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel info;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton op;
     private javax.swing.JButton rep;
+    private javax.swing.JLabel send;
+    private javax.swing.JLabel title;
     private javax.swing.JPanel whitebox;
     // End of variables declaration//GEN-END:variables
 }
