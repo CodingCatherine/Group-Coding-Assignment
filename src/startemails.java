@@ -262,7 +262,12 @@ public class startemails extends javax.swing.JFrame {
                 //update score
                 score += 10;
                 //display a message depending on if the user has gotten the problem right
-                info.setText("<html>Good Job! You got it right!<br><br>This Email is Dangerous because "+  (email.getReason()) + "</html>");
+                info.setText("<html>Good Job! You got it right!<br><br>This Email is Dangerous because "
+                        + email.getReason() 
+                        + "<br><br>The Severity of this email is: "
+                        + email.getLevel()
+                        + "</html>"
+                );
             //Check if the current email is an instance of the safe class
             }else if (emails[i] instanceof Safe) {
                 //downcast into its type
@@ -270,7 +275,11 @@ public class startemails extends javax.swing.JFrame {
                 //update score
                 score -= 10;
                 //display a message depending on if the user has gotten the problem right
-                info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Safe because " + (email.getReason()) + "</html>");
+                info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Safe because " 
+                        + email.getReason() 
+                        + "<br><br>A quote from your sender: "
+                        + email.getQuote()    
+                        + "</html>");
             }
          //If the open flag has been triggered (user has clicked the open button)
         } else if (open) {
@@ -281,7 +290,11 @@ public class startemails extends javax.swing.JFrame {
                 //update score
                 score -= 10;
                 //display a message depending on if the user has gotten the problem right
-                info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Dangerous because " + (email.getReason()) + "</html>");
+                info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Dangerous because " 
+                        + email.getReason()
+                        + "<br><br>The Severity of this email is: "
+                        + email.getLevel()
+                        + "</html>");
             //Check if the current email is an instance of the safe class
             } else if (emails[i] instanceof Safe) {
                 //downcast into its type
@@ -289,7 +302,11 @@ public class startemails extends javax.swing.JFrame {
                 //update score
                 score += 10; 
                 //display a message depending on if the user has gotten the problem right
-                info.setText("<html>Good Job! You got it right!<br><br>This Email is Safe because " + (email.getReason()) + "</html>");
+                info.setText("<html>Good Job! You got it right!<br><br>This Email is Safe because " 
+                        + email.getReason() 
+                        + "<br><br>A quote from your sender: "
+                        + email.getQuote() 
+                        +"</html>");
             }
         }
     }
@@ -344,7 +361,7 @@ public class startemails extends javax.swing.JFrame {
 
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         info.setText("Please Choose An Option Below");
-        whitebox.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 500, 260));
+        whitebox.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 500, 250));
         whitebox.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 540, 10));
 
         rep.setText("Report and delete");
