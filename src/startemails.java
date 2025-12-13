@@ -160,7 +160,7 @@ public class startemails extends javax.swing.JFrame {
                 info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Dangerous because " + (email.getReason()) + "</html>");
             } else if (emails[i] instanceof Safe) {
                 Safe email = (Safe) emails[i];
-                score += 10; // opening safe should be correct
+                score += 10; 
                 info.setText("<html>Good Job! You got it right!<br><br>This Email is Safe because " + (email.getReason()) + "</html>");
             }
         }
@@ -267,7 +267,7 @@ public class startemails extends javax.swing.JFrame {
             displayDetails(emails, currentIndex);
         }
         else{
-            new homepage().setVisible(true);
+            new End().setVisible(true);
             this.setVisible(false);
             System.out.println(score);
         }
