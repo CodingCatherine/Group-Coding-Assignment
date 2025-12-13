@@ -1,6 +1,6 @@
-Sender, Subject, Type
-Mr.Loo, School Project, safe
-Stalker223, I can see you, unsafe
-HappyFamily223, 100 dollars per hour no degree required, unsafe
-DogSitter, Your dog has been so good today!, safe
-Unknown, Your Bank has been hacked, unsafe
+Safe, Mr.Loo, School Project, Please complete this project before the deadline, the reason blahblah
+Unsafe, Stalker223, I can see you, Severe, the reason blahblah
+Unsafe, HappyFamily223, 100 dollars per hour no degree required, Moderate, the reason blahblah
+Safe, DogSitter, Your dog has been so good today!, Cooper deserves all the Treats!, the reason blahblah
+Unsafe, Unknown, Your Bank has been hacked, Moderate, the reason blahblah
+Unsafe, Joe, You have a virus, Moderate, the reason blahblah
