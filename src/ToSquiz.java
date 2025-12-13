@@ -9,6 +9,40 @@
  */
 public class ToSquiz extends javax.swing.JFrame {
 
+    // array for questions
+    private String[] questionsArray = { 
+        "Q1: Did the Terms mention collecting location data?",
+        "Q2: Which sea creature was mentioned in the ToS?",
+        "Q3: Does Data Defender sell your personal information?",
+        "Q4: What may be tracked for learning analytics?",
+        "Q5: What should you avoid doing while using the service?",
+        "Q6: Which of the following is mentioned about cookies?",
+        "Q7: What does Data Defender store to improve user experience?",
+        "Q8: Does Datat Defender us email for marketing purposes?",
+        "Q9: What is a risk of sleepwalking while using this app?",
+        "Q10: How are backups stored in Data Defender?"
+    };
+    
+    // array for answer options
+    private String[][] answerOptions = {
+        {"Yes", "No", "Maybe", "Not sure"},
+        {"SpongeBob", "Gary", "Both", "None"},
+        {"Yes", "No", "Maybe", "Not sure"},
+        {"Button presses", "Food choices", "Duck thoughts", "Emails"},
+        {"Sleepwalking", "Eating", "Wrestling", "None"},
+        {"For analytics", "For ads", "For login", "For security"},
+        {"Username & password", "Phone number", "Financial data", "Location"},
+        {"Yes", "No", "For account recovery", "For alerts"},
+        {"Injury", "Data loss", "System crash", "None"},
+        {"Guarded by squirrel", "Cloud storage", "Local disks", "Encrypted"}
+    };
+    
+    // Correct answers array (indexing starts from 0)
+    private int[] correctAnswersIndex = {0, 1, 1, 0, 0, 0, 3, 0, 2, 1};
+
+    private int currentQuestionIndex = 0; 
+    private int totalScore = 0;
+    
     /**
      * Creates new form ToSquiz
      */
@@ -25,21 +59,179 @@ public class ToSquiz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        quetions = new javax.swing.JLabel();
+        optionC = new javax.swing.JLabel();
+        optionA = new javax.swing.JLabel();
+        optionD = new javax.swing.JLabel();
+        optionB = new javax.swing.JLabel();
+        answerA = new javax.swing.JButton();
+        answerB = new javax.swing.JButton();
+        answerC = new javax.swing.JButton();
+        answerD = new javax.swing.JButton();
+        score = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setText("Lets see if you actually read the terms of service");
+
+        quetions.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        quetions.setText("Q1:");
+        quetions.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        optionC.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        optionC.setText("C:");
+        optionC.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        optionA.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        optionA.setText("A:");
+        optionA.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        optionD.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        optionD.setText("D:");
+        optionD.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        optionB.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        optionB.setText("B:");
+        optionB.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        answerA.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        answerA.setText("Option A");
+        answerA.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        answerA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerAActionPerformed(evt);
+            }
+        });
+
+        answerB.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        answerB.setText("Option B");
+        answerB.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        answerB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerBActionPerformed(evt);
+            }
+        });
+
+        answerC.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        answerC.setText("Option C");
+        answerC.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        answerC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerCActionPerformed(evt);
+            }
+        });
+
+        answerD.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        answerD.setText("Option D");
+        answerD.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        answerD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerDActionPerformed(evt);
+            }
+        });
+
+        score.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        score.setText("Score: ");
+        score.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(answerA, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(answerB, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(142, 142, 142)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(answerC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(answerD, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(quetions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(optionB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(optionA, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(optionC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(optionD, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 373, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addComponent(quetions)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(optionA)
+                    .addComponent(optionC))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(optionB)
+                    .addComponent(optionD))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(answerA, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(answerC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(answerB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(answerD, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(score)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void answerBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerBActionPerformed
+
+    private void answerCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerCActionPerformed
+
+    private void answerDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerDActionPerformed
+
+    private void answerAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_answerAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +269,18 @@ public class ToSquiz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton answerA;
+    private javax.swing.JButton answerB;
+    private javax.swing.JButton answerC;
+    private javax.swing.JButton answerD;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel optionA;
+    private javax.swing.JLabel optionB;
+    private javax.swing.JLabel optionC;
+    private javax.swing.JLabel optionD;
+    private javax.swing.JLabel quetions;
+    private javax.swing.JLabel score;
     // End of variables declaration//GEN-END:variables
 }
