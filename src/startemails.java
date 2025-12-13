@@ -21,13 +21,17 @@ public class startemails extends javax.swing.JFrame {
     public startemails() {
         initComponents();
         cont.setVisible(false);
+        title.setText(emails[currentIndex].getSubject());
+        send.setText(emails[currentIndex].getSender());
+  
     }
     
     
-    
+    public Email[] emails = readEmails(new File("emails.txt"));
     public static boolean report = false;
     public static boolean open = false;
-    public static boolean delete = false;
+    public static int score = 0;
+    public static int currentIndex = 0;
     
     public class Email {
         private final String type;
@@ -122,11 +126,11 @@ public class startemails extends javax.swing.JFrame {
             System.out.println("IO Exception!");
         }
         Email[] emailList = new Email [6];
-        for (int i = 0; i < emails.length; i++){
-            if (emails[i][2].equalsIgnoreCase("Safe")){
+        for (int i = 0; i < num; i++){
+            if (emails[i][0].equalsIgnoreCase("Safe")){
                 emailList[i] = new Safe(emails[i][0], emails[i][1], emails[i][2], emails[i][3], emails[i][4]);
             }
-            else if (emails[i][2].equalsIgnoreCase("Unsafe")){
+            else if (emails[i][0].equalsIgnoreCase("Unsafe")){
                 emailList[i] = new Unsafe(emails[i][0], emails[i][1], emails[i][2], emails[i][3], emails[i][4]);
             }else{
                 emailList[i] = new Email(emails[i][0], emails[i][1], emails[i][2]);
@@ -136,26 +140,32 @@ public class startemails extends javax.swing.JFrame {
         return emailList;
     }
     
-    public void displayDetails(Email[] emails){
-        int i = Email.numEmails;
-        while (i > 0){
+    public void displayDetails(Email[] emails, int i){
             title.setText(emails[i].getSubject());
             send.setText(emails[i].getSender());
-            if (report){
-                
+        if (report) {
+            if (emails[i] instanceof Unsafe) {
+                Unsafe email = (Unsafe) emails[i];
+                score += 10;
+                info.setText("<html>Good Job! You got it right!<br><br>This Email is Dangerous because "+  (email.getReason()) + "</html>");
+            }else if (emails[i] instanceof Safe) {
+                Safe email = (Safe) emails[i];
+                score -= 10;
+                info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Safe because " + (email.getReason()) + "</html>");
             }
-            else if (open){
-                
-            }
-            else if (delete){
-                
+        } else if (open) {
+            if (emails[i] instanceof Unsafe) {
+                Unsafe email = (Unsafe) emails[i];
+                score -= 10;
+                info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Dangerous because " + (email.getReason()) + "</html>");
+            } else if (emails[i] instanceof Safe) {
+                Safe email = (Safe) emails[i];
+                score += 10; // opening safe should be correct
+                info.setText("<html>Good Job! You got it right!<br><br>This Email is Safe because " + (email.getReason()) + "</html>");
             }
         }
-        
     }
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,7 +184,6 @@ public class startemails extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         rep = new javax.swing.JButton();
         op = new javax.swing.JButton();
-        del = new javax.swing.JButton();
         cont = new javax.swing.JButton();
         back = new javax.swing.JLabel();
 
@@ -187,7 +196,7 @@ public class startemails extends javax.swing.JFrame {
 
         title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         title.setText("Email Title details go here");
-        whitebox.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 270, 30));
+        whitebox.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 540, 30));
         whitebox.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 540, 20));
 
         send.setText("Sender");
@@ -198,13 +207,13 @@ public class startemails extends javax.swing.JFrame {
         whitebox.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 500, 260));
         whitebox.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 540, 10));
 
-        rep.setText("Report");
+        rep.setText("Report and delete");
         rep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 repActionPerformed(evt);
             }
         });
-        whitebox.add(rep, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
+        whitebox.add(rep, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 160, -1));
 
         op.setText("Open");
         op.addActionListener(new java.awt.event.ActionListener() {
@@ -212,15 +221,7 @@ public class startemails extends javax.swing.JFrame {
                 opActionPerformed(evt);
             }
         });
-        whitebox.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
-
-        del.setText("Delete");
-        del.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delActionPerformed(evt);
-            }
-        });
-        whitebox.add(del, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
+        whitebox.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 160, -1));
 
         cont.setText("Continue");
         cont.addActionListener(new java.awt.event.ActionListener() {
@@ -251,39 +252,37 @@ public class startemails extends javax.swing.JFrame {
 
     private void repActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repActionPerformed
         report = true;
+        displayDetails(emails, currentIndex);
         rep.setVisible(false);
-        del.setVisible(false);
         op.setVisible(false);
         cont.setVisible(true);
-        
     }//GEN-LAST:event_repActionPerformed
 
     private void contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contActionPerformed
+        currentIndex++;
+        if (currentIndex <= 5){
+            rep.setVisible(true);
+            op.setVisible(true);
+            cont.setVisible(false);
+            displayDetails(emails, currentIndex);
+        }
+        else{
+            new homepage().setVisible(true);
+            this.setVisible(false);
+            System.out.println(score);
+        }
         report = false;
         open = false;
-        delete = false;
-        
-        rep.setVisible(true);
-        del.setVisible(true);
-        op.setVisible(true);
-        cont.setVisible(false);
+        info.setText("Please Choose an Option Below");
     }//GEN-LAST:event_contActionPerformed
 
     private void opActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opActionPerformed
         open = true;
+        displayDetails(emails, currentIndex);
         rep.setVisible(false);
-        del.setVisible(false);
         op.setVisible(false);
         cont.setVisible(true);
     }//GEN-LAST:event_opActionPerformed
-
-    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
-        delete = true;
-        rep.setVisible(false);
-        del.setVisible(false);
-        op.setVisible(false);
-        cont.setVisible(true);
-    }//GEN-LAST:event_delActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,6 +310,7 @@ public class startemails extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(startemails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -323,7 +323,6 @@ public class startemails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
     private javax.swing.JButton cont;
-    private javax.swing.JButton del;
     private javax.swing.JLabel info;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JSeparator jSeparator1;
