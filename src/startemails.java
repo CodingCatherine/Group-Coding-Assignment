@@ -144,9 +144,9 @@ public class startemails extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        rep = new javax.swing.JButton();
+        op = new javax.swing.JButton();
+        del = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,14 +168,19 @@ public class startemails extends javax.swing.JFrame {
         whitebox.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 540, 280));
         whitebox.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 540, 10));
 
-        jButton1.setText("jButton1");
-        whitebox.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
+        rep.setText("Report");
+        rep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                repActionPerformed(evt);
+            }
+        });
+        whitebox.add(rep, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
 
-        jButton2.setText("jButton2");
-        whitebox.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, -1, -1));
+        op.setText("Open");
+        whitebox.add(op, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, -1, -1));
 
-        jButton3.setText("jButton3");
-        whitebox.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
+        del.setText("Delete");
+        whitebox.add(del, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/gmail.png"))); // NOI18N
         whitebox.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -195,6 +200,10 @@ public class startemails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void repActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_repActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,9 +241,7 @@ public class startemails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton del;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -242,6 +249,8 @@ public class startemails extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton op;
+    private javax.swing.JButton rep;
     private javax.swing.JPanel whitebox;
     // End of variables declaration//GEN-END:variables
 }
