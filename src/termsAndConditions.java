@@ -41,12 +41,14 @@ public class termsAndConditions extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jTextArea2.setRows(5);
         jTextArea2.setText("DATA DEFENDER - TERMS OF SERVICE\nLast Updated: December 9, 2025\n\nWelcome to Data Defender. These Terms of Service\ngovern your access to and use of the Data Defender\napplication. By creating an account, accessing the Service, \nor using any portion of the application, you agree to be \nlegally bound by these Terms.\n\nPlease read these Terms carefully. They describe the rules,\nresponsibilities, and limitations regarding your use of the\nService, as well as important information about how your\ndata may be collected, stored, and processed for the\npurpose of delivering core features and educational\ncontent.\n\n1. PURPOSE OF THE SERVICE\nData Defender is designed to help users develop stronger\nprivacy awareness and safer digital habits. The Service\nmay simulate real online threats such as phishing emails,\nunsafe links, and weak passwords. Occasional references\nto cartoon sea creatures may appear solely for testing\nattentiveness and emotional support.\n\n2. INFORMATION WE COLLECT\nTo provide a personalized learning experience, the Service\nmay collect the following information:\n\n- Username and encrypted password\n- Gameplay progress, choices, and scores\n- Basic device details (OS version, screen size, time zone)\n- Approximate or precise location data for regional privacy\n  law simulations and scenario customization\n- Usage patterns, click behavior, and session timestamps\n\nIn extremely rare cases, the Service may request optional\nfinancial information for simulated training exercises.\nThese simulations are fictional and no real transactions\noccur, unless you count the one time Gary from accounting\nbought a sandwich using the test server by accident.\n\nWe may also collect your thoughts on ducks wearing tiny\nhats for strictly serious, definitely not humorous research.\n\n3. DATA TRACKING AND STORAGE\nThe Service may use temporary identifiers (\"cookies\") to\nkeep you logged in and to analyze learning trends.\nBehavioral analytics may track which buttons you press,\nhow long you hesitate, and whether you read paragraphs\ncontaining the word \"squirrel.\"\n\nLocation data may be collected to tailor lessons related to\nregional risks (e.g., Wi-Fi safety, public hotspot warnings).\nYou may disable location access, but doing so may limit\nsome educational features.\n\nAll collected data is stored securely, though backups may\nbe kept in a fireproof cabinet guarded by one exceptionally\nalert squirrel. This squirrel has full clearance.\n\n4. DATA SHARING\nData Defender does not sell your personal information to\nthird parties for marketing purposes; however, anonymized\nlearning performance may be shared with researchers,\neducators, and anyone who asks extremely politely and\nbrings snacks. This clause is rarely invoked but legally\nbinding in spirit.\n\nWe do not share financial information unless required by\nlaw, court order, or if SpongeBob personally requests it\nfor undersea regulatory compliance.\n\n5. USER RESPONSIBILITIES\nBy using the Service, you agree to:\n\n- Create accurate account information\n- Maintain the security of your login credentials\n- Use the Service responsibly and ethically\n- Refrain from tampering with system functions or\n  attempting to access restricted areas\n- Avoid using the app while sleepwalking or wrestling\n  an alligator, as this could result in injury or the loss of\n  valuable reptiles\n\n6. ACCEPTANCE OF TERMS\nBy selecting the \"ACCEPT\" button, you confirm that you\nhave read and understood these Terms, including all\nsections related to data collection, tracking behavior,\nlocation access, and any references to aquatic mascots.\n\nIf you do not agree to these Terms, or if the mention of\nducks wearing hats concerns you deeply, you must stop\nusing the Service immediately.\n");
         jScrollPane3.setViewportView(jTextArea2);
 
         scrollPane1.add(jScrollPane3);
 
+        accept.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         accept.setText("Accept");
         accept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +56,7 @@ public class termsAndConditions extends javax.swing.JFrame {
             }
         });
 
+        cancel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         cancel.setText("Cancel");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +83,7 @@ public class termsAndConditions extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accept)
                     .addComponent(cancel))
