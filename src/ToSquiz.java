@@ -9,7 +9,7 @@
  */
 public class ToSquiz extends javax.swing.JFrame {
 
-    // array for questions
+    // array for questions (10 questions
     private String[] questionsArray = { 
         "Q1: Did the Terms mention collecting location data?",
         "Q2: Which sea creature was mentioned in the ToS?",
@@ -23,7 +23,7 @@ public class ToSquiz extends javax.swing.JFrame {
         "Q10: How are backups stored in Data Defender?"
     };
     
-    // array for answer options
+    // array for answer options (4 options for a,b,c and d)
     private String[][] answerOptions = {
         {"Yes", "No", "Maybe", "Not sure"},
         {"SpongeBob", "Gary", "Both", "None"},
@@ -37,10 +37,13 @@ public class ToSquiz extends javax.swing.JFrame {
         {"Guarded by squirrel", "Cloud storage", "Local disks", "Encrypted"}
     };
     
-    // Correct answers array (indexing starts from 0)
+    // correct answers array (indexing starts from 0)
     private int[] correctAnswersIndex = {0, 1, 1, 0, 0, 0, 3, 0, 2, 1};
+    // tracks which question the program is on
     private int currentQuestionIndex = 0; 
+    // keeps track of current score
     private int totalScore = 0;
+    // constant variable for points received from correct answer
     private static final int POINTS_PER_CORRECT_ANSWER = 1;
     
     /**
@@ -48,6 +51,7 @@ public class ToSquiz extends javax.swing.JFrame {
      */
     public ToSquiz() {
         initComponents();
+        // load in questions
         loadQuestion();
     }
 
@@ -276,28 +280,34 @@ public class ToSquiz extends javax.swing.JFrame {
 
     private void contrinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrinueActionPerformed
         // TODO add your handling code here:
+        // move to email checking game
         new startemails().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_contrinueActionPerformed
 
     private void leaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveActionPerformed
         // TODO add your handling code here:
+        // move to homepage
         new homepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_leaveActionPerformed
     private void loadQuestion() {
+        // checks that all questions have been gone through and disclose final score
         if (currentQuestionIndex >= questionsArray.length) {
             quetions.setText("Quiz finished!");
             optionA.setText("");
             optionB.setText("");
             optionC.setText("");
             optionD.setText("");
+            // show final score
             answerChecker.setText("Final score: " + totalScore + "/" + questionsArray.length);
             return;
         }
-
+        
+        // sets question to correct question based on index
         quetions.setText(questionsArray[currentQuestionIndex]);
 
+        // set answer options based on index
         optionA.setText("A: " + answerOptions[currentQuestionIndex][0]);
         optionB.setText("B: " + answerOptions[currentQuestionIndex][1]);
         optionC.setText("C: " + answerOptions[currentQuestionIndex][2]);
@@ -305,15 +315,22 @@ public class ToSquiz extends javax.swing.JFrame {
     }
     
 private void checkAnswer(int selectedIndex) {
+    // checks if answer is correct
     if (selectedIndex == correctAnswersIndex[currentQuestionIndex]) {
+        // inscrease total score
         totalScore += POINTS_PER_CORRECT_ANSWER;
+        // set text to correct asnwer
         answerChecker.setText("Correct!");
-        answerChecker.setForeground(java.awt.Color.GREEN);
+        // set text colour green
+        answerChecker.setForeground(new java.awt.Color(0, 153, 0));
     } else {
+        // set text to incorrect
         answerChecker.setText("Incorrect!");
+        // set colour to red
         answerChecker.setForeground(java.awt.Color.RED);
     }
 
+    // update score tracker
     score.setText("Score: " + totalScore);
     currentQuestionIndex++;
     loadQuestion();
