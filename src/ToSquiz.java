@@ -23,7 +23,7 @@ public class ToSquiz extends javax.swing.JFrame {
         "Q10: How are backups stored in Data Defender?"
     };
     
-    // array for answer options (4 options for a,b,c and d)
+    // 2D array for answer options (4 options for a,b,c and d)
     private String[][] answerOptions = {
         {"Yes", "No", "Maybe", "Not sure"},
         {"SpongeBob", "Gary", "Both", "None"},
