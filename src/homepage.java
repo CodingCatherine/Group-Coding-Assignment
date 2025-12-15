@@ -157,7 +157,7 @@ public class homepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contActionPerformed
-        new startemails().setVisible(true);
+        new PasswordChecker().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_contActionPerformed
 
