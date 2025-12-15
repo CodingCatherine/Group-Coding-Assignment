@@ -65,7 +65,7 @@
             <Component class="javax.swing.JLabel" name="title">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Trebuchet MS" size="18" style="1"/>
+                  <Font name="Trebuchet MS" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Email Title details go here"/>
               </Properties>

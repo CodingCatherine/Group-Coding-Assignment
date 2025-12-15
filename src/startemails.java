@@ -38,8 +38,6 @@ public class startemails extends javax.swing.JFrame {
     //Two static booleans to hold the button flags (once button is pressed it will trigger
     public static boolean report = false;
     public static boolean open = false;
-    //A static integer to hold the user's score
-    public static int score = 0;
     //A static integer to to hold the current index of the email that the user is looking at
     public static int currentIndex = 0;
     
@@ -260,7 +258,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Unsafe email = (Unsafe) emails[i];
                 //update score
-                score += 10;
+                intro.score ++;
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Good Job! You got it right!<br><br>This Email is Dangerous because "
                         + email.getReason() 
@@ -273,7 +271,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Safe email = (Safe) emails[i];
                 //update score
-                score -= 10;
+                intro.score -- ;
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Safe because " 
                         + email.getReason() 
@@ -288,7 +286,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Unsafe email = (Unsafe) emails[i];
                 //update score
-                score -= 10;
+                intro.score --;
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Dangerous because " 
                         + email.getReason()
@@ -300,7 +298,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Safe email = (Safe) emails[i];
                 //update score
-                score += 10; 
+                intro.score ++; 
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Good Job! You got it right!<br><br>This Email is Safe because " 
                         + email.getReason() 
@@ -351,7 +349,7 @@ public class startemails extends javax.swing.JFrame {
         whitebox.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         whitebox.add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 40, 20));
 
-        title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        title.setFont(new java.awt.Font("Trebuchet MS", 1, 17)); // NOI18N
         title.setText("Email Title details go here");
         whitebox.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 540, 30));
         whitebox.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 540, 20));
@@ -438,7 +436,6 @@ public class startemails extends javax.swing.JFrame {
             new End().setVisible(true);
             //Hide this form
             this.setVisible(false);
-            System.out.println(score);
         }
         //Set all flags as false as a new email will appear
         report = false;
