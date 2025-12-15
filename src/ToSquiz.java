@@ -18,7 +18,7 @@ public class ToSquiz extends javax.swing.JFrame {
         "Q5: What should you avoid doing while using the service?",
         "Q6: Which of the following is mentioned about cookies?",
         "Q7: What does Data Defender store to improve user experience?",
-        "Q8: Does Datat Defender us email for marketing purposes?",
+        "Q8: Does Data Defender use your email for marketing purposes?",
         "Q9: What is a risk of sleepwalking while using this app?",
         "Q10: How are backups stored in Data Defender?"
     };
