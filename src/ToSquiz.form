@@ -66,20 +66,15 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="answerChecker" min="-2" pref="120" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="answerB" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <Component id="answerA" min="-2" pref="160" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="372" max="-2" attributes="0"/>
-                                  </Group>
+                              <Component id="answerChecker" min="-2" pref="120" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="answerB" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="answerA" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="372" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
