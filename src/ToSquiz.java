@@ -291,6 +291,13 @@ public class ToSquiz extends javax.swing.JFrame {
         new homepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_leaveActionPerformed
+    private void disableOptionButtons() {
+        answerA.setEnabled(false);
+        answerB.setEnabled(false);
+        answerC.setEnabled(false);
+        answerD.setEnabled(false);
+    }
+    
     private void loadQuestion() {
         // checks that all questions have been gone through and disclose final score
         if (currentQuestionIndex >= questionsArray.length) {
@@ -299,8 +306,12 @@ public class ToSquiz extends javax.swing.JFrame {
             optionB.setText("");
             optionC.setText("");
             optionD.setText("");
+            
             // show final score
             answerChecker.setText("Final score: " + totalScore + "/" + questionsArray.length);
+            
+            // disable option buttons 
+            disableOptionButtons();
             return;
         }
         
