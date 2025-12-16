@@ -7,6 +7,7 @@
  *
  * @author alina
  */
+import java.awt.Color;
 public class toEmail extends javax.swing.JFrame {
 
     /**
@@ -15,11 +16,14 @@ public class toEmail extends javax.swing.JFrame {
     public toEmail() {
         initComponents();
         label.setText(
-            "Thank you for creating an account with Data Defender.\n" +
-            "You may now move on to learning about how to identify \n" +
-            "suspicious emails.\n\n" +
-            "Your Current score is… " + intro.gameScore.getScore()
-        );
+                "<html>" +
+                "Thank you for creating an account with Data Defender.<br>" +
+                "You may now move on to learning about how to identify suspicious emails.<br><br>" +
+                "Your Current score is…." + intro.gameScore.getScore() +
+                "</html>"
+                ); 
+        whitebox.setBackground(new Color(255, 255, 255));
+
     }
 
     /**
@@ -32,10 +36,10 @@ public class toEmail extends javax.swing.JFrame {
     private void initComponents() {
 
         label = new javax.swing.JLabel();
-        move = new javax.swing.JButton();
         exit = new javax.swing.JLabel();
         banner = new javax.swing.JLabel();
         graybox = new javax.swing.JPanel();
+        move = new javax.swing.JButton();
         whitebox = new javax.swing.JPanel();
         steamtxt = new javax.swing.JLabel();
         steamicon = new javax.swing.JLabel();
@@ -51,9 +55,23 @@ public class toEmail extends javax.swing.JFrame {
         windowsbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        label.setBackground(new java.awt.Color(255, 255, 255));
         label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        label.setText("<html>\nWelcome to Data Defender!\n<br>\n<br>\nTo begin this game, please create an account.\n<br>\n<br> \nClick OK to begin.\n</html>");
+        label.setText("<html> Welcome to Data Defender! <br> <br> To begin this game, please create an account. <br> <br>  Click OK to begin. </html>");
+        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 280, -1));
+
+        exit.setForeground(new java.awt.Color(153, 153, 153));
+        exit.setText("X");
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 10, -1));
+
+        banner.setForeground(new java.awt.Color(153, 153, 153));
+        banner.setText("Setup Software");
+        getContentPane().add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+
+        graybox.setBackground(new java.awt.Color(220, 220, 220));
+        graybox.setPreferredSize(new java.awt.Dimension(400, 60));
 
         move.setText("OK");
         move.addActionListener(new java.awt.event.ActionListener() {
@@ -62,193 +80,83 @@ public class toEmail extends javax.swing.JFrame {
             }
         });
 
-        exit.setForeground(new java.awt.Color(153, 153, 153));
-        exit.setText("X");
-
-        banner.setForeground(new java.awt.Color(153, 153, 153));
-        banner.setText("Setup Software");
-
-        graybox.setBackground(new java.awt.Color(220, 220, 220));
-
         javax.swing.GroupLayout grayboxLayout = new javax.swing.GroupLayout(graybox);
         graybox.setLayout(grayboxLayout);
         grayboxLayout.setHorizontalGroup(
             grayboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, grayboxLayout.createSequentialGroup()
+                .addContainerGap(182, Short.MAX_VALUE)
+                .addComponent(move, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         grayboxLayout.setVerticalGroup(
             grayboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, grayboxLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(move)
+                .addContainerGap())
         );
 
+        getContentPane().add(graybox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 300, 50));
+
         whitebox.setBackground(new java.awt.Color(255, 255, 255));
+        whitebox.setPreferredSize(new java.awt.Dimension(400, 250));
 
         javax.swing.GroupLayout whiteboxLayout = new javax.swing.GroupLayout(whitebox);
         whitebox.setLayout(whiteboxLayout);
         whiteboxLayout.setHorizontalGroup(
             whiteboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 379, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         whiteboxLayout.setVerticalGroup(
             whiteboxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
+
+        getContentPane().add(whitebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 300, 240));
 
         steamtxt.setForeground(new java.awt.Color(255, 255, 255));
         steamtxt.setText("Steam");
+        getContentPane().add(steamtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         steamicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/steamicon.png"))); // NOI18N
+        getContentPane().add(steamicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         riottxt.setForeground(new java.awt.Color(255, 255, 255));
         riottxt.setText("Riot Client");
+        getContentPane().add(riottxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         rioticon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/rioticon.png"))); // NOI18N
+        getContentPane().add(rioticon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 50, 50));
 
         chrometxt.setForeground(new java.awt.Color(255, 255, 255));
         chrometxt.setText("Google Chrome");
+        getContentPane().add(chrometxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 20));
 
         chromeicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/chromeicon.png"))); // NOI18N
+        getContentPane().add(chromeicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         netbeanstxt.setForeground(new java.awt.Color(255, 255, 255));
         netbeanstxt.setText("Netbeans");
+        getContentPane().add(netbeanstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         recyclingtxt.setForeground(new java.awt.Color(255, 255, 255));
         recyclingtxt.setText("Recycling Bin");
+        getContentPane().add(recyclingtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         netbeansicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/netbeansicon.png"))); // NOI18N
+        getContentPane().add(netbeansicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         recyclingbin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/recyclingicon.png"))); // NOI18N
+        getContentPane().add(recyclingbin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         title.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
         title.setText("Data Defender");
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 170, 60));
 
         windowsbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(steamicon))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(recyclingbin))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(270, 270, 270)
-                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(210, 210, 210)
-                            .addComponent(banner))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addComponent(steamtxt))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(402, 402, 402)
-                            .addComponent(move, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(riottxt))
-                        .addComponent(windowsbackground, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(rioticon))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(netbeanstxt))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(netbeansicon))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(30, 30, 30)
-                                    .addComponent(chromeicon))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(20, 20, 20)
-                                    .addComponent(recyclingtxt))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(chrometxt)))
-                            .addGap(64, 64, 64)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(whitebox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(graybox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(exit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(330, 330, 330)
-                            .addComponent(steamicon))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(250, 250, 250)
-                            .addComponent(rioticon))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(140, 140, 140)
-                            .addComponent(netbeanstxt))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(70, 70, 70)
-                            .addComponent(whitebox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(netbeansicon))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(recyclingbin))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(170, 170, 170)
-                            .addComponent(chromeicon))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(80, 80, 80)
-                            .addComponent(banner))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(380, 380, 380)
-                            .addComponent(steamtxt))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(recyclingtxt))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(220, 220, 220)
-                            .addComponent(chrometxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(250, 250, 250)
-                            .addComponent(move))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(300, 300, 300)
-                            .addComponent(riottxt))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(240, 240, 240)
-                            .addComponent(graybox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(windowsbackground, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(windowsbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 723, 429));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
