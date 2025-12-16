@@ -55,8 +55,6 @@ public class ToSquiz extends javax.swing.JFrame {
     private int[] correctAnswersIndex = {0, 1, 1, 0, 0, 0, 3, 0, 2, 1};
     // tracks which question the program is on
     private int currentQuestionIndex = 0;
-    // keeps track of current score
-    private int totalScore = 0;
     // constant variable for points received from correct answer
     private static final int POINTS_PER_CORRECT_ANSWER = 1;
 
@@ -327,7 +325,7 @@ public class ToSquiz extends javax.swing.JFrame {
             optionD.setText("");
             
             // show final score
-            answerChecker.setText("Final score: " + totalScore + "/" + questionsArray.length);
+            answerChecker.setText("Final score: " + intro.gameScore.getScore() + "/" + questionsArray.length);
             
             // disable option buttons 
             disableOptionButtons();
