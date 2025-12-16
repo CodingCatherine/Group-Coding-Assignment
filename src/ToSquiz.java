@@ -295,7 +295,7 @@ public class ToSquiz extends javax.swing.JFrame {
         new startemails().setVisible(true);
         this.setVisible(false);
         //add values to the score
-        intro.score += totalScore;
+        intro.gameScore.addPoints(totalScore);
     }//GEN-LAST:event_contrinueActionPerformed
 
     private void leaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveActionPerformed
