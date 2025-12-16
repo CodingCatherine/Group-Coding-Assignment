@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 
 public class PasswordChecker extends javax.swing.JFrame {
+    private boolean firstAttempt = true;
 
     /**
      * Creates new form PasswordChecker
@@ -23,6 +24,7 @@ public class PasswordChecker extends javax.swing.JFrame {
         initComponents();
         //Make button false 
         jButton2.setEnabled(false);
+
     }
 
     /**
@@ -197,20 +199,26 @@ public class PasswordChecker extends javax.swing.JFrame {
      * Finds most common password error
      */
 public String getMostCommonError() {
+    //inintialize variables
     File file = new File("PasswordError.txt");
     String mostCommon = "";
     int highestCount = 0;
 
     try {
-        String[] lines = new String[1000]; // store errors
+        // store errors
+        String[] lines = new String[1000]; 
         int count = 0;
 
         Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
-            String[] parts = line.split(","); // split line by comma
-            String error = parts[parts.length - 1]; // last element = error
-            lines[count] = error; // store only error
+            //split line by comma
+            String[] parts = line.split(","); 
+             //last element = error
+            String error = parts[parts.length - 1];
+            //store only error
+            lines[count] = error; 
+            //increase count by one
             count++;
         }
         scanner.close();
@@ -223,8 +231,9 @@ public String getMostCommonError() {
                     currentCount++;
                 }
             }
-
+            //Check if this error is most occuring
             if (currentCount > highestCount) {
+                //Replace if it is
                 highestCount = currentCount;
                 mostCommon = lines[i];
             }
@@ -431,7 +440,6 @@ public String getMostCommonError() {
     String UserInfo = jTextField1.getText();
     String UserName = jTextField2.getText();
     String Password = jTextField3.getText();
-    
     //Create a new account object
     Account user = new Account(UserInfo, UserName, Password);
     //Create a new Password info checker object
@@ -444,7 +452,16 @@ public String getMostCommonError() {
         //open try 
         try{
             //Initialize writing variable
-            FileWriter writer = new FileWriter("PasswordError.txt", true);
+            FileWriter writer;
+            //Checks if its users first time writing passwords
+            if (firstAttempt) {
+                //overwrite file (erase old content)
+                writer = new FileWriter("PasswordError.txt", false);
+                firstAttempt = false;
+            } else {
+                //append user erros
+                writer = new FileWriter("PasswordError.txt", true);
+                }           
             PrintWriter output = new PrintWriter(writer);
             //write to file
             output.println(user.toString());
