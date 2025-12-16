@@ -21,6 +21,8 @@ public class PasswordChecker extends javax.swing.JFrame {
      */
     public PasswordChecker() {
         initComponents();
+        //Make button false 
+        jButton2.setEnabled(false);
     }
 
     /**
@@ -34,53 +36,98 @@ public class PasswordChecker extends javax.swing.JFrame {
      
      
     **/
+    
+    /**
+    Used to Initialize Password objects
+    * @Author Amy Chen 
+    * @since 2025-12-15
+     */
     public class Password {
-
+    //Initialize variables
     private String value;
-
+    /**
+     * Constructor password object
+     * @param value holds users password
+     */
     public Password(String value) {
+        //set value param
         this.value = value;
     }
 
+    /**
+     * Return Password
+     * @return users current password
+     */
     public String getValue() {
         return value;
         }
     }
     /**
-     
-     
-     
+    Used to Initialize Account objects
+    * @Author Amy Chen 
+    * @since 2025-12-15
     **/
     public class Account {
-
+    //Initialize variables
     private String username;
     private Password password;
     private String name;
-
+    private String passError;
+    
+    /**
+     * Constructor password object
+     * @param name holds users name
+     * @param username holds user's username
+     * @param passwordValue holds user password
+     */
     public Account(String name, String username, String passwordValue) {
+        //assign the inputted values to their respective attributes 
         this.username = username;
         this.name = name;
+        
         this.password = new Password(passwordValue);
     }
-
+    public void setPasswordError(String error){
+        this.passError = error;
+    }
+    /**
+     * Get the user's username of the specified object
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
-
+    /**
+     * Get the user's password of the specified object
+     * @return password
+     */
     public Password getPassword() {
         return password;
         }
+    /**
+     * Get the user's name of the specified object
+     * @return name
+     */
     public String getName(){
         return name;
     }
+    
+    @Override
+    public String toString(){
+        //Save everything including the error
+        return name + "," + username + "," + password.getValue() + "," + passError;
+    }
     }
     /**
-     
-     
-     
+    Check if password is strong
+    * @Author Amy Chen 
+    * @since 2025-12-15
     **/
     public class isPasswordGood {
-
+    /**
+     * Checks if password is strong
+     * @param password holds password
+     */
     public String checkPassword(String password) {
 
         if (password.length() < 8)
@@ -101,27 +148,39 @@ public class PasswordChecker extends javax.swing.JFrame {
         return "Strong";
     }
 }
+    /**
+    * Checks if password has user info
+    * @Author Amy Chen 
+    * @since 2025-12-15
+    **/
     public class PersonalInfoChecker extends isPasswordGood {
-
-    
+    //Initialize variable
     private Account account;
-
+    /**
+     * Constructor for account 
+     * @param account holds account object
+     */
     public PersonalInfoChecker(Account account) {
         this.account = account;
     }
-
+    /**
+     * Checks if user info is in password
+     * @param password holds password
+     */
     @Override
     public String checkPassword(String password) {
-
+        //Initialize variable 
         String result = super.checkPassword(password);
-
+        //Checks if password is strong
         if (!result.equals("Strong"))
             return result;
-
+        //Checks if password had username. (makes them both lowercase)
         if (password.toLowerCase().contains(
                 account.getUsername().toLowerCase())) {
+            
             return "Contains username";
         }
+        //Checks if password had name. (makes them both lowercase)
         if (password.toLowerCase().contains(
                 account.getName().toLowerCase())){
             return "Personal information is in Password";
@@ -130,39 +189,46 @@ public class PasswordChecker extends javax.swing.JFrame {
         return "Strong";
     }
 }
+    
+    
+    
+ 
+    /**
+     * Finds most common password error
+     */
 public String getMostCommonError() {
-
     File file = new File("PasswordError.txt");
-
     String mostCommon = "";
     int highestCount = 0;
 
     try {
+        String[] lines = new String[1000]; // store errors
+        int count = 0;
+
         Scanner scanner = new Scanner(file);
-
         while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] parts = line.split(","); // split line by comma
+            String error = parts[parts.length - 1]; // last element = error
+            lines[count] = error; // store only error
+            count++;
+        }
+        scanner.close();
 
-            String currentError = scanner.nextLine();
-            int count = 0;
-
-            // Count how many times this error appears
-            Scanner scanner2 = new Scanner(file);
-            while (scanner2.hasNextLine()) {
-                String line = scanner2.nextLine();
-                if (line.equals(currentError)) {
-                    count++;
+        // Now count which error appears most frequently
+        for (int i = 0; i < count; i++) {
+            int currentCount = 0;
+            for (int j = 0; j < count; j++) {
+                if (lines[i].equals(lines[j])) {
+                    currentCount++;
                 }
             }
-            scanner2.close();
 
-            // Check if this is the most common
-            if (count > highestCount) {
-                highestCount = count;
-                mostCommon = currentError;
+            if (currentCount > highestCount) {
+                highestCount = currentCount;
+                mostCommon = lines[i];
             }
         }
-
-        scanner.close();
 
     } catch (IOException e) {
         System.out.println("Error reading file");
@@ -170,11 +236,9 @@ public String getMostCommonError() {
 
     return mostCommon;
 }
-    /**
-     
-     
-     
-    **/
+
+
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -196,6 +260,7 @@ public String getMostCommonError() {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 495));
@@ -257,6 +322,13 @@ public String getMostCommonError() {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Account Creation ");
 
+        jButton2.setText("Continue");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -286,11 +358,15 @@ public String getMostCommonError() {
                                 .addGap(183, 183, 183))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -309,10 +385,15 @@ public String getMostCommonError() {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addGap(12, 12, 12)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(7, 7, 7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel3)
@@ -346,41 +427,55 @@ public String getMostCommonError() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    //Initialize variables
     String UserInfo = jTextField1.getText();
     String UserName = jTextField2.getText();
     String Password = jTextField3.getText();
     
+    //Create a new account object
     Account user = new Account(UserInfo, UserName, Password);
-    
+    //Create a new Password info checker object
     PersonalInfoChecker checker = new PersonalInfoChecker(user);
-    
-    String result = checker.checkPassword(
-        user.getPassword().getValue());
-    
+    //Inialize result variable
+    String result = checker.checkPassword(user.getPassword().getValue());
+    user.setPasswordError(result);
+    //Check is password isn't strong
     if (!result.equals("Strong")){
+        //open try 
         try{
-        FileWriter writer = new FileWriter("PasswordError.txt", true);
-        PrintWriter output = new PrintWriter(writer);
-        output.println(result);
-        output.close();
-        jLabel9.setText("Missing:" + result);
-        jLabel10.setText("");
-
+            //Initialize writing variable
+            FileWriter writer = new FileWriter("PasswordError.txt", true);
+            PrintWriter output = new PrintWriter(writer);
+            //write to file
+            output.println(user.toString());
+            //save file
+            output.close();
+            //output missing qualities for password
+            jLabel9.setText("Missing:" + result);
+            jLabel10.setText("");
         }
         catch(IOException e){
             
-        }}
+        }
+    }
         else {
+            //Allow user to continue
            jLabel10.setText("Password is STRONGG!!");
            jLabel9.setText("");
-
+           jButton2.setEnabled(true);
+           //Tell use most common error
             String common = getMostCommonError();
-            jLabel11.setText(" | Most common issue: " + common);
+            jLabel11.setText("Most common issue: " + common);
         
        }
     
-// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Continue to terms and conditions
+        new termsAndConditions().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,6 +514,7 @@ public String getMostCommonError() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
