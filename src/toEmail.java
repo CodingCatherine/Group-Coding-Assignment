@@ -15,6 +15,7 @@ public class toEmail extends javax.swing.JFrame {
      */
     public toEmail() {
         initComponents();
+        // set text into label
         label.setText(
                 "<html>" +
                 "Thank you for creating an account with Data Defender.<br>" +
@@ -22,6 +23,7 @@ public class toEmail extends javax.swing.JFrame {
                 "Your Current score is…." + intro.gameScore.getScore() +
                 "</html>"
                 ); 
+        // ensure that the whitebox is white
         whitebox.setBackground(new Color(255, 255, 255));
 
     }
@@ -162,6 +164,7 @@ public class toEmail extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void moveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveActionPerformed
+        // move onto to email game
         new startemails().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_moveActionPerformed
