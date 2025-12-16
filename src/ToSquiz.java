@@ -10,7 +10,7 @@
 public class ToSquiz extends javax.swing.JFrame {
 
     // array for questions (10 questions
-    private String[] questionsArray = { 
+    private String[] questionsArray = {
         "Q1: Did the Terms mention collecting location data?",
         "Q2: Which sea creature was mentioned in the ToS?",
         "Q3: Does Data Defender sell your personal information?",
@@ -18,11 +18,11 @@ public class ToSquiz extends javax.swing.JFrame {
         "Q5: What should you avoid doing while using the service?",
         "Q6: Which of the following is mentioned about cookies?",
         "Q7: What does Data Defender store to improve user experience?",
-        "Q8: Does Data Defender use your email for marketing purposes?",
+        "Q8: Does Data Defender use email for marketing purposes?",
         "Q9: What is a risk of sleepwalking while using this app?",
         "Q10: How are backups stored in Data Defender?"
     };
-    
+
     // 2D array for answer options (4 options for a,b,c and d)
     private String[][] answerOptions = {
         {"Yes", "No", "Maybe", "Not sure"},
@@ -36,21 +36,37 @@ public class ToSquiz extends javax.swing.JFrame {
         {"Injury", "Data loss", "System crash", "None"},
         {"Guarded by squirrel", "Cloud storage", "Local disks", "Encrypted"}
     };
-    
+
+    // array for feedback 
+    private String[] feedback = {
+        "Section 3: Data Tracking and Storage",
+        "Section 2: Information We Collect",
+        "Section 4: Data Sharing",
+        "Section 3: Data Tracking and Storage",
+        "Section 5: User Responsibilities",
+        "Section 3: Data Tracking and Storage",
+        "Section 3: Data Tracking and Storage",
+        "Section 4: Data Sharing",
+        "Section 5: User Responsibilities",
+        "Section 3: Data Tracking and Storage"
+    };
+
     // correct answers array (indexing starts from 0)
     private int[] correctAnswersIndex = {0, 1, 1, 0, 0, 0, 3, 0, 2, 1};
     // tracks which question the program is on
-    private int currentQuestionIndex = 0; 
+    private int currentQuestionIndex = 0;
     // keeps track of current score
     private int totalScore = 0;
     // constant variable for points received from correct answer
     private static final int POINTS_PER_CORRECT_ANSWER = 1;
-    
+
     /**
      * Creates new form ToSquiz
      */
     public ToSquiz() {
         initComponents();
+        // disable continue 
+        contrinue.setEnabled(false);
         // load in questions
         loadQuestion();
     }
@@ -175,21 +191,32 @@ public class ToSquiz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(leave, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contrinue, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(score, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(357, 357, 357)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(answerC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(answerD, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(357, 357, 357)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(answerC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(answerD, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(87, 87, 87))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(answerB, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(answerA, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(436, 436, 436))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(optionA, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -198,28 +225,12 @@ public class ToSquiz extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(optionB, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(optionD, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(answerChecker, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(234, 234, 234))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(answerB, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(answerA, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(372, 372, 372)))))
-                        .addGap(64, 64, 64))
+                                    .addComponent(optionD, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(answerChecker, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(64, 64, 64)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(83, 83, 83))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(leave, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contrinue, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,9 +249,9 @@ public class ToSquiz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(optionB)
                     .addComponent(optionD))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(answerChecker)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(answerA, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(answerC, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,6 +304,9 @@ public class ToSquiz extends javax.swing.JFrame {
         new homepage().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_leaveActionPerformed
+   /**
+    * disables all option buttons once the quiz is complete
+    */
     private void disableOptionButtons() {
         answerA.setEnabled(false);
         answerB.setEnabled(false);
@@ -300,6 +314,11 @@ public class ToSquiz extends javax.swing.JFrame {
         answerD.setEnabled(false);
     }
     
+    /**
+    * loads in all the quiz questions and answer option based on the index
+    * once the quiz is complete is displays the final score, disables the answer buttons
+    * and enable the continue button
+    */
     private void loadQuestion() {
         // checks that all questions have been gone through and disclose final score
         if (currentQuestionIndex >= questionsArray.length) {
@@ -314,6 +333,9 @@ public class ToSquiz extends javax.swing.JFrame {
             
             // disable option buttons 
             disableOptionButtons();
+            
+            // allow user to continue 
+            contrinue.setEnabled(true);
             return;
         }
         
@@ -327,21 +349,26 @@ public class ToSquiz extends javax.swing.JFrame {
         optionD.setText("D: " + answerOptions[currentQuestionIndex][3]);
     }
     
-private void checkAnswer(int selectedIndex) {
-    // checks if answer is correct
-    if (selectedIndex == correctAnswersIndex[currentQuestionIndex]) {
-        // inscrease total score
-        totalScore += POINTS_PER_CORRECT_ANSWER;
-        // set text to correct asnwer
-        answerChecker.setText("Correct!");
-        // set text colour green
-        answerChecker.setForeground(new java.awt.Color(0, 153, 0));
-    } else {
-        // set text to incorrect
-        answerChecker.setText("Incorrect!");
-        // set colour to red
-        answerChecker.setForeground(java.awt.Color.RED);
-    }
+    /** 
+     * checks if the answer was correct and provided feedback based on that
+     * it up dates the user score, advances to the next question and reloads the quiz stat
+     * @param selectedIndex - index of the answer the user chooses
+     */
+    private void checkAnswer(int selectedIndex) {
+        // checks if answer is correct
+        if (selectedIndex == correctAnswersIndex[currentQuestionIndex]) {
+            // inscrease total score
+            totalScore += POINTS_PER_CORRECT_ANSWER;
+            // set text to correct asnwer
+            answerChecker.setText("Correct!");
+            // set text colour green
+            answerChecker.setForeground(new java.awt.Color(0, 153, 0));
+        } else {
+            // set text to incorrect
+            answerChecker.setText("Incorrect. Please read " + feedback[currentQuestionIndex] + " more carefully next time.");
+            // set colour to red
+            answerChecker.setForeground(java.awt.Color.RED);
+        }
 
     // update score tracker
     score.setText("Score: " + totalScore);
