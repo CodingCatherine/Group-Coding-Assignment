@@ -258,7 +258,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Unsafe email = (Unsafe) emails[i];
                 //update score
-                intro.score ++;
+                intro.gameScore.addPoints(1);
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Good Job! You got it right!<br><br>This Email is Dangerous because "
                         + email.getReason() 
@@ -271,7 +271,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Safe email = (Safe) emails[i];
                 //update score
-                intro.score -- ;
+                intro.gameScore.removePoints(1);
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Safe because " 
                         + email.getReason() 
@@ -286,7 +286,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Unsafe email = (Unsafe) emails[i];
                 //update score
-                intro.score --;
+                intro.gameScore.removePoints(1);;
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Sorry, your answer is wrong!<br><br>This Email is Dangerous because " 
                         + email.getReason()
@@ -298,7 +298,7 @@ public class startemails extends javax.swing.JFrame {
                 //downcast into its type
                 Safe email = (Safe) emails[i];
                 //update score
-                intro.score ++; 
+                intro.gameScore.addPoints(1); 
                 //display a message depending on if the user has gotten the problem right
                 info.setText("<html>Good Job! You got it right!<br><br>This Email is Safe because " 
                         + email.getReason() 

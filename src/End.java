@@ -14,6 +14,11 @@ public class End extends javax.swing.JFrame {
      */
     public End() {
         initComponents();
+        // Assuming Score.score holds the player's final score
+        jLabel1.setText("<html> Thank you for Playing Data Defender! <br>  "
+                + "<br>  We hope you learned some useful online safety practices to stay safe on the internet. <br> "
+                + "<br>   Hopefully you enjoyed this game! <br><br> Your End Score is " 
+                    + intro.gameScore.getScore() + "</html>");
     }
 
     /**
