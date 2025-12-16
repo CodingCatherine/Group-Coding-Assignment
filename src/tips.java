@@ -24,7 +24,6 @@ public class tips extends javax.swing.JFrame {
     
     public static File file = new File ("tips.txt");
     public static int numTips;
-    public static boolean isThereTip = false;
     
     public class staySafe {
         private Description description;
@@ -53,7 +52,7 @@ public class tips extends javax.swing.JFrame {
         }
         
         public String toString (){
-            return name + "," + description;
+            return name + "," + description.toString();
         }
             
     }
@@ -74,6 +73,10 @@ public class tips extends javax.swing.JFrame {
         
         public String getCategory(){
             return category;
+        }
+        
+        public String toString(){
+            return category + "," + details;
         }
         
     }
@@ -162,6 +165,11 @@ public class tips extends javax.swing.JFrame {
 
         cont.setBackground(new java.awt.Color(204, 255, 255));
         cont.setText("Continue -->");
+        cont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,8 +236,17 @@ public class tips extends javax.swing.JFrame {
     }//GEN-LAST:event_tf1ActionPerformed
 
     private void finActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finActionPerformed
+        addTips(desc());
+        cont.setVisible(true);
+        fin.setVisible(false);
         
     }//GEN-LAST:event_finActionPerformed
+
+    private void contActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contActionPerformed
+        new End().setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_contActionPerformed
 
     /**
      * @param args the command line arguments
