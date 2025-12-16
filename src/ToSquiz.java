@@ -9,7 +9,7 @@
  */
 public class ToSquiz extends javax.swing.JFrame {
 
-    // array for questions (10 questions
+    // array for questions (10 questions)
     private String[] questionsArray = {
         "Q1: Did the Terms mention collecting location data?",
         "Q2: Which sea creature was mentioned in the ToS?",
@@ -55,8 +55,6 @@ public class ToSquiz extends javax.swing.JFrame {
     private int[] correctAnswersIndex = {0, 1, 1, 0, 0, 0, 3, 0, 2, 1};
     // tracks which question the program is on
     private int currentQuestionIndex = 0;
-    // keeps track of current score
-    private int totalScore = 0;
     // constant variable for points received from correct answer
     private static final int POINTS_PER_CORRECT_ANSWER = 1;
 
@@ -294,8 +292,6 @@ public class ToSquiz extends javax.swing.JFrame {
         // move to email checking game
         new startemails().setVisible(true);
         this.setVisible(false);
-        //add values to the score
-        intro.gameScore.addPoints(totalScore);
     }//GEN-LAST:event_contrinueActionPerformed
 
     private void leaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveActionPerformed
@@ -329,7 +325,7 @@ public class ToSquiz extends javax.swing.JFrame {
             optionD.setText("");
             
             // show final score
-            answerChecker.setText("Final score: " + totalScore + "/" + questionsArray.length);
+            answerChecker.setText("Final score: " + intro.gameScore.getScore() + "/" + questionsArray.length);
             
             // disable option buttons 
             disableOptionButtons();
@@ -358,7 +354,7 @@ public class ToSquiz extends javax.swing.JFrame {
         // checks if answer is correct
         if (selectedIndex == correctAnswersIndex[currentQuestionIndex]) {
             // inscrease total score
-            totalScore += POINTS_PER_CORRECT_ANSWER;
+            intro.gameScore.addPoints(POINTS_PER_CORRECT_ANSWER);
             // set text to correct asnwer
             answerChecker.setText("Correct!");
             // set text colour green
@@ -371,7 +367,7 @@ public class ToSquiz extends javax.swing.JFrame {
         }
 
     // update score tracker
-    score.setText("Score: " + totalScore);
+    score.setText("Score: " + intro.gameScore.getScore());
     currentQuestionIndex++;
     loadQuestion();
     }
