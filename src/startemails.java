@@ -53,7 +53,7 @@ public class startemails extends javax.swing.JFrame {
         private final String sender; //Sender of the email
         private final String subject; //Subject of the email
         public static int numEmails; // Static integer to hold the number of emails
-        
+
         /**
          * Constructor for the email class
          * @param type holds the type of email that is being instantiated
