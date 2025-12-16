@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -19,7 +23,79 @@ public class End extends javax.swing.JFrame {
                 + "<br>  We hope you learned some useful online safety practices to stay safe on the internet. <br> "
                 + "<br>   Hopefully you enjoyed this game! <br><br> Your End Score is " 
                     + intro.gameScore.getScore() + "</html>");
+        
+        //Find and display a random tip from all the inputs from previous users
+        findTip(setTip(tips.file));
     }
+    
+    /**
+     * A method that counts all the tips submitted by users and puts them into  
+     * an array
+     **/
+    public tips.staySafe[] setTip(File file) {
+        tips outer = new tips(); //Must need an enclosing instance as we are not in the tips class anymore (java is weird)
+        tips.staySafe[] arr = new tips.staySafe[0];  //Create an array for staySafe objects and initialize the size as 0 to start
+
+        try {
+            //Create a counter to count the number of tips in the file
+            int counter = 0;
+            //Initialize scanner to loop through all the tips in the file
+            Scanner scan = new Scanner(file);
+            //Loop through each line in the file and add one to the counter 
+            while (scan.hasNextLine()) {
+                scan.nextLine();
+                counter++;
+            }
+            //Once all lines are finished close the scanner
+            scan.close();
+            
+            //Change the global variable numTips to the number of Tips found in the file
+            tips.numTips = counter;
+            //Change the array size to the number of tips we found in the previous try catch
+            arr = new tips.staySafe[counter];
+            //A new variable to help us loop through all indices of the array
+            int arrcount = 0;
+            //Initialize the scanner
+            Scanner scan2 = new Scanner(file);
+            
+            //Loop through all lines in the file 
+            while (scan2.hasNextLine()) {
+                //Write the current line to a string
+                String line = scan2.nextLine();
+                //Split the string and put it into an array
+                String[] data = line.split(",");
+                //Create a new description object with the values in the file
+                tips.Description desc = outer.new Description(data[2], data[1]);
+                //Create a new staySafe object with the values in the file and the description object created previously
+                arr[arrcount] = outer.new staySafe(desc, data[0]);
+                //add one to the arrcount so that it will cycle through the indices of the tips array
+                arrcount++;
+            }
+            //Close the scanner
+            scan2.close();
+            
+         // If an exception is thrown print out an error
+        } catch (FileNotFoundException e) {
+            System.out.println("File not Found");
+        }
+        //return the finished array
+        return arr;
+    }
+    
+    /**
+     * This method will take a staySafe array and choose a random tip to display for the user
+     * @param arr and array that holds staySafe(tip) objects
+     */
+    public void findTip(tips.staySafe[] arr){
+        //Create a new random number generator object
+        Random choice = new Random();
+        //Randomly choose an integer between 0 and the number of tips found in the file
+        int intChoice = choice.nextInt(tips.numTips);
+        //Whatever number is chosen use that number as the indice for the array 
+        //call on the pretty string method to display a well formatted version of the chosen string
+        tip.setText(arr[intChoice].toPrettyString());
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,6 +106,7 @@ public class End extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         recyclingbin = new javax.swing.JLabel();
         recyclingtxt = new javax.swing.JLabel();
@@ -47,7 +124,19 @@ public class End extends javax.swing.JFrame {
         exit = new javax.swing.JLabel();
         banner = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        tip = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,24 +196,28 @@ public class End extends javax.swing.JFrame {
         banner.setForeground(new java.awt.Color(153, 153, 153));
         banner.setText("System Notification");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("<html> Thank you for Playing Data Defender! <br>  <br>  We hope you learned some useful online safety practices to stay safe on the internet. <br>  <br>   Hopefully you enjoyed this game! \n</html>");
+
+        tip.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout whiteLayout = new javax.swing.GroupLayout(white);
         white.setLayout(whiteLayout);
         whiteLayout.setHorizontalGroup(
             whiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
             .addGroup(whiteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(banner)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(whiteLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, whiteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(whiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tip, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         whiteLayout.setVerticalGroup(
             whiteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,12 +227,14 @@ public class End extends javax.swing.JFrame {
                     .addComponent(exit)
                     .addComponent(banner))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(tip, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLayeredPane1.add(white, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 460, 290));
+        jLayeredPane1.add(white, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 460, 350));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/background.png"))); // NOI18N
         jLayeredPane1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 430));
@@ -210,6 +305,7 @@ public class End extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel netbeansicon;
     private javax.swing.JLabel netbeanstxt;
     private javax.swing.JLabel recyclingbin;
@@ -218,6 +314,7 @@ public class End extends javax.swing.JFrame {
     private javax.swing.JLabel riottxt;
     private javax.swing.JLabel steamicon;
     private javax.swing.JLabel steamtxt;
+    private javax.swing.JLabel tip;
     private javax.swing.JPanel white;
     // End of variables declaration//GEN-END:variables
 }
