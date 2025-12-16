@@ -9,7 +9,7 @@
  */
 public class ToSquiz extends javax.swing.JFrame {
 
-    // array for questions (10 questions
+    // array for questions (10 questions)
     private String[] questionsArray = {
         "Q1: Did the Terms mention collecting location data?",
         "Q2: Which sea creature was mentioned in the ToS?",
@@ -294,8 +294,6 @@ public class ToSquiz extends javax.swing.JFrame {
         // move to email checking game
         new startemails().setVisible(true);
         this.setVisible(false);
-        //add values to the score
-        intro.gameScore.addPoints(totalScore);
     }//GEN-LAST:event_contrinueActionPerformed
 
     private void leaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveActionPerformed
@@ -358,7 +356,7 @@ public class ToSquiz extends javax.swing.JFrame {
         // checks if answer is correct
         if (selectedIndex == correctAnswersIndex[currentQuestionIndex]) {
             // inscrease total score
-            totalScore += POINTS_PER_CORRECT_ANSWER;
+            intro.gameScore.addPoints(POINTS_PER_CORRECT_ANSWER);
             // set text to correct asnwer
             answerChecker.setText("Correct!");
             // set text colour green
@@ -371,7 +369,7 @@ public class ToSquiz extends javax.swing.JFrame {
         }
 
     // update score tracker
-    score.setText("Score: " + totalScore);
+    score.setText("Score: " + intro.gameScore.getScore());
     currentQuestionIndex++;
     loadQuestion();
     }
