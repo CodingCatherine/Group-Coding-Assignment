@@ -89,8 +89,8 @@ public class End extends javax.swing.JFrame {
     public void findTip(tips.staySafe[] arr){
         //Create a new random number generator object
         Random choice = new Random();
-        //Randomly choose an integer between 0 and the number of tips found in the file
-        int intChoice = choice.nextInt(tips.numTips);
+        //Randomly choose an integer between 0 and the length of the array(number of tips)
+        int intChoice = choice.nextInt(arr.length);
         //Whatever number is chosen use that number as the indice for the array 
         //call on the pretty string method to display a well formatted version of the chosen string
         tip.setText(arr[intChoice].toPrettyString());
@@ -188,7 +188,7 @@ public class End extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 19, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
 
         exit.setForeground(new java.awt.Color(153, 153, 153));
         exit.setText("X");
@@ -227,11 +227,11 @@ public class End extends javax.swing.JFrame {
                     .addComponent(exit)
                     .addComponent(banner))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(tip, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLayeredPane1.add(white, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 460, 350));
