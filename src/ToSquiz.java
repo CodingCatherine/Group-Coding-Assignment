@@ -289,7 +289,7 @@ public class ToSquiz extends javax.swing.JFrame {
 
     private void contrinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrinueActionPerformed
         // TODO add your handling code here:
-        // move to email checking game
+        // move to in between frame
         new toEmail().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_contrinueActionPerformed
