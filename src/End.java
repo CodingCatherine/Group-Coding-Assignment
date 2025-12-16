@@ -103,7 +103,7 @@ public class End extends javax.swing.JFrame {
         banner.setText("System Notification");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("<html> Thank you for Playing Data Defender! <br>  <br>  We hope you learned some useful online safety practices to stay safe on the internet. <br>  <br>   Hopefully you enjoyed this game! <br><br> Your End Score is... </html>");
+        jLabel1.setText("<html> Thank you for Playing Data Defender! <br>  <br>  We hope you learned some useful online safety practices to stay safe on the internet. <br>  <br>   Hopefully you enjoyed this game! \n</html>");
 
         javax.swing.GroupLayout whiteLayout = new javax.swing.GroupLayout(white);
         white.setLayout(whiteLayout);
